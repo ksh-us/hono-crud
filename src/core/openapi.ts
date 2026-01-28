@@ -1,0 +1,205 @@
+import type { Hono, Env, Context } from 'hono';
+import { OpenAPIHono, createRoute } from '@hono/zod-openapi';
+import type { OpenAPIRoute } from './route.js';
+import { isRouteClass } from './route.js';
+import { ApiException } from './exceptions.js';
+import type { OpenAPIRouteSchema } from './types.js';
+
+export interface OpenAPIConfig {
+  openapi?: string;
+  info: {
+    title: string;
+    version: string;
+    description?: string;
+  };
+  servers?: Array<{ url: string; description?: string }>;
+  security?: Array<Record<string, string[]>>;
+}
+
+export interface RouterOptions {
+  base?: string;
+  docs_url?: string;
+  redoc_url?: string;
+  openapi_url?: string;
+}
+
+type RouteMethod = 'get' | 'post' | 'put' | 'patch' | 'delete' | 'options' | 'head';
+
+// Type for OpenAPIRoute constructor
+type OpenAPIRouteConstructor = new () => OpenAPIRoute<any, any>;
+
+/**
+ * Handler for OpenAPI routes with Hono.
+ */
+export class HonoOpenAPIHandler<E extends Env = Env> {
+  private app: OpenAPIHono<E>;
+  private options: RouterOptions;
+  private routes: Map<string, { method: RouteMethod; schema: OpenAPIRouteSchema }> = new Map();
+
+  constructor(app: OpenAPIHono<E>, options: RouterOptions = {}) {
+    this.app = app;
+    this.options = {
+      docs_url: '/docs',
+      redoc_url: '/redoc',
+      openapi_url: '/openapi.json',
+      ...options,
+    };
+  }
+
+  /**
+   * Registers an OpenAPIRoute class as a route.
+   */
+  registerRoute(
+    method: RouteMethod,
+    path: string,
+    RouteClass: typeof OpenAPIRoute
+  ): void {
+    const routeKey = `${method.toUpperCase()} ${path}`;
+
+    // Create instance to get schema
+    const RouteConstructor = RouteClass as unknown as OpenAPIRouteConstructor;
+    const instance = new RouteConstructor();
+    const schema = instance.getSchema();
+
+    this.routes.set(routeKey, { method, schema });
+
+    // Create the zod-openapi route config
+    const routeConfig = createRoute({
+      method,
+      path: this.convertPath(path),
+      ...schema,
+      responses: schema.responses || {
+        200: {
+          description: 'Success',
+          content: {
+            'application/json': {
+              schema: { type: 'object' },
+            },
+          },
+        },
+      },
+    });
+
+    // Register with OpenAPIHono
+    this.app.openapi(routeConfig, async (c) => {
+      const routeInstance = new RouteConstructor();
+      routeInstance.setContext(c as unknown as Context<any>);
+
+      try {
+        const response = await routeInstance.handle();
+        return response;
+      } catch (error) {
+        if (error instanceof ApiException) {
+          return c.json(error.toJSON(), error.status as 200);
+        }
+        throw error;
+      }
+    });
+  }
+
+  /**
+   * Converts Express-style paths (:id) to OpenAPI-style paths ({id}).
+   */
+  private convertPath(path: string): string {
+    return path.replace(/:([a-zA-Z_][a-zA-Z0-9_]*)/g, '{$1}');
+  }
+
+  /**
+   * Sets up the OpenAPI documentation endpoints.
+   */
+  setupDocs(config: OpenAPIConfig): void {
+    // OpenAPI JSON endpoint
+    this.app.doc(this.options.openapi_url!, {
+      openapi: config.openapi || '3.1.0',
+      info: config.info,
+      servers: config.servers,
+      security: config.security,
+    });
+  }
+
+  getApp(): OpenAPIHono<E> {
+    return this.app;
+  }
+}
+
+/**
+ * Creates a proxied Hono app that auto-registers OpenAPIRoute classes.
+ *
+ * Pass an OpenAPIHono instance to use middleware with your routes.
+ * Middleware should be applied directly to the app using `app.use()`.
+ *
+ * @example
+ * ```ts
+ * import { OpenAPIHono } from '@hono/zod-openapi';
+ * import { fromHono, multiTenant } from 'hono-crud';
+ *
+ * const app = fromHono(new OpenAPIHono());
+ *
+ * // Apply middleware directly to the app
+ * app.use('/*', multiTenant());
+ *
+ * // Register routes
+ * app.post('/users', UserCreate);
+ * app.get('/users', UserList);
+ * ```
+ */
+export function fromHono<E extends Env = Env>(
+  router: Hono<E> | OpenAPIHono<E> = new OpenAPIHono<E>(),
+  options: RouterOptions = {}
+): OpenAPIHono<E> & {
+  doc: (path: string, config: OpenAPIConfig) => void;
+} {
+  // Use the router directly if it's an OpenAPIHono, otherwise create one
+  const app = 'openAPIRegistry' in router
+    ? (router as OpenAPIHono<E>)
+    : new OpenAPIHono<E>();
+
+  const handler = new HonoOpenAPIHandler<E>(app, options);
+  const methods: RouteMethod[] = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];
+
+  // Create proxy to intercept route registrations
+  const proxy = new Proxy(app, {
+    get(target, prop: string) {
+      if (methods.includes(prop as RouteMethod)) {
+        return (path: string, handlerOrClass: unknown, ...rest: unknown[]) => {
+          // Check if it's an OpenAPIRoute class
+          if (isRouteClass(handlerOrClass)) {
+            handler.registerRoute(prop as RouteMethod, path, handlerOrClass);
+            return proxy;
+          }
+
+          // Otherwise, use normal Hono routing
+          return (target[prop as keyof typeof target] as Function)(
+            path,
+            handlerOrClass,
+            ...rest
+          );
+        };
+      }
+
+      if (prop === 'doc') {
+        return (path: string, config: OpenAPIConfig) => {
+          handler.setupDocs(config);
+        };
+      }
+
+      // For 'use' method, apply to the app and return proxy for chaining
+      if (prop === 'use') {
+        return (...args: unknown[]) => {
+          (target[prop as keyof typeof target] as Function)(...args);
+          return proxy;
+        };
+      }
+
+      const value = target[prop as keyof typeof target];
+      if (typeof value === 'function') {
+        return value.bind(target);
+      }
+      return value;
+    },
+  });
+
+  return proxy as OpenAPIHono<E> & {
+    doc: (path: string, config: OpenAPIConfig) => void;
+  };
+}

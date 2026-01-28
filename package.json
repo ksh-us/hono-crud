@@ -1,0 +1,72 @@
+{
+  "name": "hono-crud",
+  "version": "0.1.0",
+  "description": "CRUD generator for Hono with Zod validation and OpenAPI generation",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./adapters/memory": {
+      "types": "./dist/adapters/memory/index.d.ts",
+      "import": "./dist/adapters/memory/index.js"
+    },
+    "./adapters/drizzle": {
+      "types": "./dist/adapters/drizzle/index.d.ts",
+      "import": "./dist/adapters/drizzle/index.js"
+    },
+    "./adapters/prisma": {
+      "types": "./dist/adapters/prisma/index.d.ts",
+      "import": "./dist/adapters/prisma/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch examples/basic.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "hono",
+    "crud",
+    "openapi",
+    "zod",
+    "rest",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@hono/swagger-ui": "^0.5.3",
+    "@hono/zod-openapi": "^0.19.3",
+    "hono": "^4.7.5",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@hono/node-server": "^1.19.9",
+    "@libsql/client": "^0.15.4",
+    "@types/node": "^22.14.1",
+    "@types/pg": "^8.16.0",
+    "drizzle-orm": "^0.40.1",
+    "pg": "^8.17.2",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  },
+  "peerDependencies": {
+    "@prisma/client": ">=5.0.0",
+    "drizzle-orm": ">=0.30.0"
+  },
+  "peerDependenciesMeta": {
+    "drizzle-orm": {
+      "optional": true
+    },
+    "@prisma/client": {
+      "optional": true
+    }
+  }
+}
