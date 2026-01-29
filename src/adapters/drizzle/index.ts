@@ -63,7 +63,6 @@ interface DrizzleSelectQuery<T = unknown> {
   limit(n: number): DrizzleSelectQuery<T>;
   offset(n: number): DrizzleSelectQuery<T>;
   orderBy(...columns: SQL[]): DrizzleSelectQuery<T>;
-  from(table: Table): DrizzleSelectQuery<T>;
   then<TResult>(
     onfulfilled?: (value: T[]) => TResult | PromiseLike<TResult>
   ): Promise<TResult>;

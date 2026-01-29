@@ -23,22 +23,32 @@
  * ```
  */
 
-import type { Table } from 'drizzle-orm';
 import type { z } from 'zod';
+import { createRequire } from 'module';
+
+// Create require function for ESM compatibility
+const require = createRequire(import.meta.url);
+
+/**
+ * Duck-typed interface for Drizzle tables.
+ * This allows compatibility across different drizzle-orm versions and package installations.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type DrizzleTable = { _: { name: string; columns: Record<string, any> } };
 
 // Type definitions for drizzle-zod functions
 // These allow the module to compile even without drizzle-zod installed
-type CreateSelectSchema = <T extends Table>(
+type CreateSelectSchema = <T extends DrizzleTable>(
   table: T,
   refine?: Record<string, z.ZodTypeAny>
 ) => z.ZodObject<Record<string, z.ZodTypeAny>>;
 
-type CreateInsertSchema = <T extends Table>(
+type CreateInsertSchema = <T extends DrizzleTable>(
   table: T,
   refine?: Record<string, z.ZodTypeAny>
 ) => z.ZodObject<Record<string, z.ZodTypeAny>>;
 
-type CreateUpdateSchema = <T extends Table>(
+type CreateUpdateSchema = <T extends DrizzleTable>(
   table: T,
   refine?: Record<string, z.ZodTypeAny>
 ) => z.ZodObject<Record<string, z.ZodTypeAny>>;
@@ -65,9 +75,7 @@ function tryLoadDrizzleZod(): typeof _drizzleZod {
   _loadAttempted = true;
 
   try {
-    // Try dynamic require for synchronous loading
-    // This works in Node.js environments
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    // Use createRequire for ESM compatibility
     _drizzleZod = require('drizzle-zod');
     return _drizzleZod;
   } catch {
@@ -117,7 +125,7 @@ async function loadDrizzleZodAsync(): Promise<typeof _drizzleZod> {
  * type User = z.infer<typeof UserSchema>;
  * ```
  */
-export function createSelectSchema<T extends Table>(
+export function createSelectSchema<T extends DrizzleTable>(
   table: T,
   refine?: Record<string, z.ZodTypeAny>
 ): z.ZodObject<Record<string, z.ZodTypeAny>> {
@@ -142,7 +150,7 @@ export function createSelectSchema<T extends Table>(
  * type CreateUser = z.infer<typeof CreateUserSchema>;
  * ```
  */
-export function createInsertSchema<T extends Table>(
+export function createInsertSchema<T extends DrizzleTable>(
   table: T,
   refine?: Record<string, z.ZodTypeAny>
 ): z.ZodObject<Record<string, z.ZodTypeAny>> {
@@ -170,7 +178,7 @@ export function createInsertSchema<T extends Table>(
  * type UpdateUser = z.infer<typeof UpdateUserSchema>;
  * ```
  */
-export function createUpdateSchema<T extends Table>(
+export function createUpdateSchema<T extends DrizzleTable>(
   table: T,
   refine?: Record<string, z.ZodTypeAny>
 ): z.ZodObject<Record<string, z.ZodTypeAny>> {
@@ -240,7 +248,7 @@ export interface DrizzleSchemas {
  * });
  * ```
  */
-export function createDrizzleSchemas<T extends Table>(
+export function createDrizzleSchemas<T extends DrizzleTable>(
   table: T,
   options?: {
     insertRefine?: Record<string, z.ZodTypeAny>;
@@ -272,7 +280,7 @@ export function createDrizzleSchemas<T extends Table>(
  * @param options - Optional configuration
  * @returns Promise resolving to schemas object
  */
-export async function createDrizzleSchemasAsync<T extends Table>(
+export async function createDrizzleSchemasAsync<T extends DrizzleTable>(
   table: T,
   options?: {
     insertRefine?: Record<string, z.ZodTypeAny>;

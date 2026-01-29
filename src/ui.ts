@@ -1,5 +1,6 @@
 import type { Hono, Env } from 'hono';
 import { swaggerUI } from '@hono/swagger-ui';
+import { setupScalar as setupScalarFromModule, type ScalarConfig } from './ui/scalar';
 
 export interface UIOptions {
   /**
@@ -11,6 +12,10 @@ export interface UIOptions {
    */
   redocPath?: string;
   /**
+   * Path to serve Scalar (default: '/scalar')
+   */
+  scalarPath?: string;
+  /**
    * Path to the OpenAPI JSON spec (default: '/openapi.json')
    */
   specPath?: string;
@@ -18,6 +23,10 @@ export interface UIOptions {
    * Page title for the documentation
    */
   title?: string;
+  /**
+   * Scalar configuration options
+   */
+  scalar?: Omit<ScalarConfig, 'specUrl' | 'pageTitle'>;
 }
 
 /**
@@ -70,14 +79,26 @@ export function setupReDoc<E extends Env>(
 }
 
 /**
- * Sets up both Swagger UI and ReDoc endpoints.
+ * Sets up Swagger UI, ReDoc, and Scalar endpoints.
  */
 export function setupDocs<E extends Env>(
   app: Hono<E>,
   options: UIOptions = {}
 ): void {
+  const {
+    scalarPath = '/scalar',
+    specPath = '/openapi.json',
+    title = 'API Documentation',
+    scalar = {},
+  } = options;
+
   setupSwaggerUI(app, options);
   setupReDoc(app, options);
+  setupScalarFromModule(app, scalarPath, {
+    specUrl: specPath,
+    pageTitle: title,
+    ...scalar,
+  });
 }
 
 /**
@@ -91,6 +112,7 @@ export function setupDocsIndex<E extends Env>(
     indexPath = '/',
     docsPath = '/docs',
     redocPath = '/redoc',
+    scalarPath = '/scalar',
     specPath = '/openapi.json',
     title = 'API Documentation',
   } = options;
@@ -131,6 +153,8 @@ export function setupDocsIndex<E extends Env>(
       .card a:hover { background: #0052a3; }
       .card.redoc a { background: #e53935; }
       .card.redoc a:hover { background: #c62828; }
+      .card.scalar a { background: #8b5cf6; }
+      .card.scalar a:hover { background: #7c3aed; }
       .card.json a { background: #43a047; }
       .card.json a:hover { background: #2e7d32; }
     </style>
@@ -148,6 +172,12 @@ export function setupDocsIndex<E extends Env>(
       <h2>ReDoc</h2>
       <p>Clean, responsive API documentation.</p>
       <a href="${redocPath}">Open ReDoc &rarr;</a>
+    </div>
+
+    <div class="card scalar">
+      <h2>Scalar</h2>
+      <p>Modern, beautiful API reference documentation.</p>
+      <a href="${scalarPath}">Open Scalar &rarr;</a>
     </div>
 
     <div class="card json">

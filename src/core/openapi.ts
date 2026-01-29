@@ -29,6 +29,52 @@ type RouteMethod = 'get' | 'post' | 'put' | 'patch' | 'delete' | 'options' | 'he
 type OpenAPIRouteConstructor = new () => OpenAPIRoute<Env>;
 
 /**
+ * Type for any class that extends OpenAPIRoute.
+ * This uses a duck-typed approach to allow subclasses with different generic parameters.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type OpenAPIRouteClass = new () => { getSchema(): OpenAPIRouteSchema; handle(): Promise<Response>; setContext(ctx: any): void };
+
+/**
+ * Type for the proxied Hono app that accepts both regular handlers and OpenAPIRoute classes.
+ * This extends OpenAPIHono with method overloads for class-based routing.
+ */
+export type HonoOpenAPIApp<E extends Env = Env> = OpenAPIHono<E> & {
+  /**
+   * Register a GET route with an OpenAPIRoute class.
+   */
+  get(path: string, RouteClass: OpenAPIRouteClass): HonoOpenAPIApp<E>;
+  /**
+   * Register a POST route with an OpenAPIRoute class.
+   */
+  post(path: string, RouteClass: OpenAPIRouteClass): HonoOpenAPIApp<E>;
+  /**
+   * Register a PUT route with an OpenAPIRoute class.
+   */
+  put(path: string, RouteClass: OpenAPIRouteClass): HonoOpenAPIApp<E>;
+  /**
+   * Register a PATCH route with an OpenAPIRoute class.
+   */
+  patch(path: string, RouteClass: OpenAPIRouteClass): HonoOpenAPIApp<E>;
+  /**
+   * Register a DELETE route with an OpenAPIRoute class.
+   */
+  delete(path: string, RouteClass: OpenAPIRouteClass): HonoOpenAPIApp<E>;
+  /**
+   * Register an OPTIONS route with an OpenAPIRoute class.
+   */
+  options(path: string, RouteClass: OpenAPIRouteClass): HonoOpenAPIApp<E>;
+  /**
+   * Register a HEAD route with an OpenAPIRoute class.
+   */
+  head(path: string, RouteClass: OpenAPIRouteClass): HonoOpenAPIApp<E>;
+  /**
+   * Set up OpenAPI documentation endpoint.
+   */
+  doc(path: string, config: OpenAPIConfig): void;
+};
+
+/**
  * Handler for OpenAPI routes with Hono.
  */
 export class HonoOpenAPIHandler<E extends Env = Env> {
@@ -150,9 +196,7 @@ export class HonoOpenAPIHandler<E extends Env = Env> {
 export function fromHono<E extends Env = Env>(
   router: Hono<E> | OpenAPIHono<E> = new OpenAPIHono<E>(),
   options: RouterOptions = {}
-): OpenAPIHono<E> & {
-  doc: (path: string, config: OpenAPIConfig) => void;
-} {
+): HonoOpenAPIApp<E> {
   // Use the router directly if it's an OpenAPIHono, otherwise create one
   const app = 'openAPIRegistry' in router
     ? (router as OpenAPIHono<E>)
@@ -203,7 +247,5 @@ export function fromHono<E extends Env = Env>(
     },
   });
 
-  return proxy as OpenAPIHono<E> & {
-    doc: (path: string, config: OpenAPIConfig) => void;
-  };
+  return proxy as HonoOpenAPIApp<E>;
 }
