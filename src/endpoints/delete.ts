@@ -1,7 +1,7 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import { OpenAPIRoute } from '../core/route.js';
+import { OpenAPIRoute } from '../core/route';
 import type {
   MetaInput,
   OpenAPIRouteSchema,
@@ -11,11 +11,11 @@ import type {
   NormalizedMultiTenantConfig,
   RelationConfig,
   CascadeAction,
-} from '../core/types.js';
-import { getSoftDeleteConfig, getAuditConfig, getMultiTenantConfig, extractTenantId } from '../core/types.js';
-import { NotFoundException, ConflictException } from '../core/exceptions.js';
-import type { ModelObject } from './types.js';
-import { createAuditLogger, type AuditLogger } from '../core/audit.js';
+} from '../core/types';
+import { getSoftDeleteConfig, getAuditConfig, getMultiTenantConfig, extractTenantId } from '../core/types';
+import { NotFoundException, ConflictException } from '../core/exceptions';
+import type { ModelObject } from './types';
+import { createAuditLogger, type AuditLogger } from '../core/audit';
 
 /**
  * Result of cascade operations during delete.

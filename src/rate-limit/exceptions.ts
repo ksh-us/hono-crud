@@ -1,4 +1,4 @@
-import { ApiException } from '../core/exceptions.js';
+import { ApiException } from '../core/exceptions';
 
 /**
  * Exception thrown when rate limit is exceeded.

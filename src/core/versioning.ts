@@ -3,8 +3,8 @@ import type {
   VersionHistoryEntry,
   NormalizedVersioningConfig,
   AuditFieldChange,
-} from './types.js';
-import { calculateChanges, getVersioningConfig, type VersioningConfig } from './types.js';
+} from './types';
+import { calculateChanges, getVersioningConfig, type VersioningConfig } from './types';
 
 /**
  * Interface for version history storage adapters.

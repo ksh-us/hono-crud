@@ -25,35 +25,35 @@ export type {
   Guard,
   // Endpoint types
   EndpointAuthConfig,
-} from './types.js';
+} from './types';
 
 export {
   // JWT claims validation
   JWTClaimsSchema,
   parseJWTClaims,
   safeParseJWTClaims,
-} from './types.js';
+} from './types';
 
 // ============================================================================
 // Middleware Exports
 // ============================================================================
 
 // JWT middleware
-export { createJWTMiddleware, verifyJWT, decodeJWT } from './middleware/jwt.js';
+export { createJWTMiddleware, verifyJWT, decodeJWT } from './middleware/jwt';
 
 // API Key middleware
 export {
   createAPIKeyMiddleware,
   validateAPIKey,
   defaultHashAPIKey,
-} from './middleware/api-key.js';
+} from './middleware/api-key';
 
 // Combined middleware
 export {
   createAuthMiddleware,
   optionalAuth,
   requireAuthentication,
-} from './middleware/combined.js';
+} from './middleware/combined';
 
 // ============================================================================
 // Guard Exports
@@ -77,14 +77,14 @@ export {
   denyAll,
   allowAll,
   requireAuthenticated,
-} from './guards.js';
+} from './guards';
 
 // ============================================================================
 // Endpoint Exports
 // ============================================================================
 
-export { AuthenticatedEndpoint, withAuth } from './endpoint.js';
-export type { AuthEndpointMethods } from './endpoint.js';
+export { AuthenticatedEndpoint, withAuth } from './endpoint';
+export type { AuthEndpointMethods } from './endpoint';
 
 // ============================================================================
 // Storage Exports
@@ -97,13 +97,13 @@ export {
   isValidAPIKeyFormat,
   getAPIKeyStorage,
   setAPIKeyStorage,
-} from './storage/memory.js';
+} from './storage/memory';
 
 // ============================================================================
 // Validator Exports
 // ============================================================================
 
-export { validateJWTClaims } from './validators/jwt-claims.js';
-export type { JWTClaimsValidationOptions } from './validators/jwt-claims.js';
+export { validateJWTClaims } from './validators/jwt-claims';
+export type { JWTClaimsValidationOptions } from './validators/jwt-claims';
 
-export { validateAPIKeyEntry } from './validators/api-key.js';
+export { validateAPIKeyEntry } from './validators/api-key';

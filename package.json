@@ -2,6 +2,16 @@
   "name": "hono-crud",
   "version": "0.1.0",
   "description": "CRUD generator for Hono with Zod validation and OpenAPI generation",
+  "author": "Kauan Guesser <contato@kauan.net>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksh-us/hono-crud.git"
+  },
+  "homepage": "https://github.com/ksh-us/hono-crud#readme",
+  "bugs": {
+    "url": "https://github.com/ksh-us/hono-crud/issues"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,22 +45,35 @@
     "db:up": "cd examples && docker compose up -d",
     "db:down": "cd examples && docker compose down",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepare": "tsup",
+    "prepublishOnly": "pnpm run typecheck && pnpm run test run"
   },
   "keywords": [
     "hono",
     "crud",
+    "rest-api",
     "openapi",
+    "swagger",
+    "typescript",
     "zod",
-    "rest",
-    "api"
+    "prisma",
+    "drizzle",
+    "cloudflare-workers"
   ],
-  "author": "",
-  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
   "dependencies": {
     "@hono/swagger-ui": "^0.5.3",
     "@hono/zod-openapi": "^1.2.0",
-    "@prisma/adapter-pg": "^7.3.0",
     "@scalar/hono-api-reference": "^0.9.19",
     "fastest-levenshtein": "^1.0.16",
     "hono": "^4.11.4",
@@ -74,15 +97,19 @@
     "vitest": "^3.1.1"
   },
   "peerDependencies": {
+    "@prisma/adapter-pg": ">=5.0.0",
     "@prisma/client": ">=5.0.0",
     "drizzle-orm": ">=0.30.0",
     "drizzle-zod": ">=0.8.0"
   },
   "peerDependenciesMeta": {
-    "drizzle-orm": {
+    "@prisma/adapter-pg": {
       "optional": true
     },
     "@prisma/client": {
+      "optional": true
+    },
+    "drizzle-orm": {
       "optional": true
     },
     "drizzle-zod": {

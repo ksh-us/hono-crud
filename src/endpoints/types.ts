@@ -13,7 +13,7 @@ import type {
   SchemaKeys,
   defineModel,
   defineMeta,
-} from '../core/types.js';
+} from '../core/types';
 
 // Re-export core types
 export type {

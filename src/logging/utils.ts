@@ -1,6 +1,6 @@
 import type { Context, Env } from 'hono';
-import type { PathPattern, RedactField } from './types.js';
-import { getContextVar } from '../core/context-helpers.js';
+import type { PathPattern, RedactField } from './types';
+import { getContextVar } from '../core/context-helpers';
 
 // ============================================================================
 // Redaction Utilities

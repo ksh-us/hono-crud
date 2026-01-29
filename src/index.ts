@@ -1,16 +1,16 @@
 // Combined environment type
-import type { AuthEnv } from './auth/types.js';
-import type { LoggingEnv } from './logging/types.js';
-import type { RateLimitEnv } from './rate-limit/types.js';
-import type { StorageEnv } from './storage/types.js';
+import type { AuthEnv } from './auth/types';
+import type { LoggingEnv } from './logging/types';
+import type { RateLimitEnv } from './rate-limit/types';
+import type { StorageEnv } from './storage/types';
 
 /** Combined environment type with all hono-crud context variables */
 export type HonoCrudEnv = AuthEnv & LoggingEnv & RateLimitEnv & StorageEnv;
 
 // Core exports
-export { OpenAPIRoute, isRouteClass } from './core/route.js';
-export { fromHono, HonoOpenAPIHandler } from './core/openapi.js';
-export type { OpenAPIConfig, RouterOptions } from './core/openapi.js';
+export { OpenAPIRoute, isRouteClass } from './core/route';
+export { fromHono, HonoOpenAPIHandler } from './core/openapi';
+export type { OpenAPIConfig, RouterOptions } from './core/openapi';
 export {
   ApiException,
   InputValidationException,
@@ -21,32 +21,32 @@ export {
   AggregationException,
   CacheException,
   ConfigurationException,
-} from './core/exceptions.js';
+} from './core/exceptions';
 export {
   createErrorHandler,
   zodErrorMapper,
-} from './core/error-handler.js';
+} from './core/error-handler';
 export type {
   ErrorMapper,
   ErrorHook,
   ErrorHandlerConfig,
-} from './core/error-handler.js';
+} from './core/error-handler';
 export {
   AuditLogger,
   MemoryAuditLogStorage,
   createAuditLogger,
   setAuditStorage,
   getAuditStorage,
-} from './core/audit.js';
-export type { AuditLogStorage } from './core/audit.js';
+} from './core/audit';
+export type { AuditLogStorage } from './core/audit';
 export {
   VersionManager,
   MemoryVersioningStorage,
   createVersionManager,
   setVersioningStorage,
   getVersioningStorage,
-} from './core/versioning.js';
-export type { VersioningStorage } from './core/versioning.js';
+} from './core/versioning';
+export type { VersioningStorage } from './core/versioning';
 export {
   defineModel,
   defineMeta,
@@ -63,12 +63,12 @@ export {
   parseSearchMode,
   getMultiTenantConfig,
   extractTenantId,
-} from './core/types.js';
-export { multiTenant } from './core/multi-tenant.js';
+} from './core/types';
+export { multiTenant } from './core/multi-tenant';
 export type {
   MultiTenantMiddlewareOptions,
   TenantEnv,
-} from './core/multi-tenant.js';
+} from './core/multi-tenant';
 export type {
   FilterOperator,
   FilterConfig,
@@ -133,42 +133,42 @@ export type {
   SearchResultItem,
   SearchOptions,
   SearchResult,
-} from './core/types.js';
+} from './core/types';
 
 // Endpoint exports
-export { CreateEndpoint } from './endpoints/create.js';
-export { ReadEndpoint } from './endpoints/read.js';
-export { UpdateEndpoint } from './endpoints/update.js';
-export { DeleteEndpoint } from './endpoints/delete.js';
-export type { CascadeResult } from './endpoints/delete.js';
-export { ListEndpoint } from './endpoints/list.js';
-export { RestoreEndpoint } from './endpoints/restore.js';
-export { UpsertEndpoint } from './endpoints/upsert.js';
-export type { UpsertResult } from './endpoints/upsert.js';
-export { BatchCreateEndpoint } from './endpoints/batch-create.js';
-export { BatchUpdateEndpoint } from './endpoints/batch-update.js';
-export type { BatchUpdateItem, BatchUpdateResult } from './endpoints/batch-update.js';
-export { BatchDeleteEndpoint } from './endpoints/batch-delete.js';
-export type { BatchDeleteResult } from './endpoints/batch-delete.js';
-export { BatchRestoreEndpoint } from './endpoints/batch-restore.js';
-export type { BatchRestoreResult } from './endpoints/batch-restore.js';
-export { BatchUpsertEndpoint } from './endpoints/batch-upsert.js';
-export type { BatchUpsertItemResult, BatchUpsertResult } from './endpoints/batch-upsert.js';
+export { CreateEndpoint } from './endpoints/create';
+export { ReadEndpoint } from './endpoints/read';
+export { UpdateEndpoint } from './endpoints/update';
+export { DeleteEndpoint } from './endpoints/delete';
+export type { CascadeResult } from './endpoints/delete';
+export { ListEndpoint } from './endpoints/list';
+export { RestoreEndpoint } from './endpoints/restore';
+export { UpsertEndpoint } from './endpoints/upsert';
+export type { UpsertResult } from './endpoints/upsert';
+export { BatchCreateEndpoint } from './endpoints/batch-create';
+export { BatchUpdateEndpoint } from './endpoints/batch-update';
+export type { BatchUpdateItem, BatchUpdateResult } from './endpoints/batch-update';
+export { BatchDeleteEndpoint } from './endpoints/batch-delete';
+export type { BatchDeleteResult } from './endpoints/batch-delete';
+export { BatchRestoreEndpoint } from './endpoints/batch-restore';
+export type { BatchRestoreResult } from './endpoints/batch-restore';
+export { BatchUpsertEndpoint } from './endpoints/batch-upsert';
+export type { BatchUpsertItemResult, BatchUpsertResult } from './endpoints/batch-upsert';
 export {
   VersionHistoryEndpoint,
   VersionReadEndpoint,
   VersionCompareEndpoint,
   VersionRollbackEndpoint,
-} from './endpoints/version-history.js';
-export { AggregateEndpoint, computeAggregations } from './endpoints/aggregate.js';
-export { SearchEndpoint, searchInMemory } from './endpoints/search.js';
-export { ExportEndpoint } from './endpoints/export.js';
+} from './endpoints/version-history';
+export { AggregateEndpoint, computeAggregations } from './endpoints/aggregate';
+export { SearchEndpoint, searchInMemory } from './endpoints/search';
+export { ExportEndpoint } from './endpoints/export';
 export type {
   ExportFormat,
   ExportOptions,
   ExportResult,
-} from './endpoints/export.js';
-export { ImportEndpoint } from './endpoints/import.js';
+} from './endpoints/export';
+export { ImportEndpoint } from './endpoints/import';
 export type {
   ImportMode,
   ImportRowStatus,
@@ -176,7 +176,7 @@ export type {
   ImportSummary,
   ImportResult,
   ImportOptions,
-} from './endpoints/import.js';
+} from './endpoints/import';
 export {
   tokenize,
   tokenizeQuery,
@@ -185,7 +185,7 @@ export {
   generateHighlights,
   parseSearchFields,
   buildSearchConfig,
-} from './endpoints/search-utils.js';
+} from './endpoints/search-utils';
 export {
   parseFilterValue,
   parseListFilters,
@@ -193,7 +193,7 @@ export {
   parseFieldSelection,
   applyFieldSelection,
   applyFieldSelectionToArray,
-} from './endpoints/types.js';
+} from './endpoints/types';
 export type {
   ListEndpointConfig,
   SingleEndpointConfig,
@@ -201,11 +201,11 @@ export type {
   ModelObject,
   FieldSelectionConfig,
   FieldSelection,
-} from './endpoints/types.js';
+} from './endpoints/types';
 
 // Utility exports
-export { registerCrud, contentJson, successResponse, errorResponse } from './utils.js';
-export type { CrudEndpoints, EndpointClass, HonoOpenAPIApp } from './utils.js';
+export { registerCrud, contentJson, successResponse, errorResponse } from './utils';
+export type { CrudEndpoints, EndpointClass, HonoOpenAPIApp } from './utils';
 
 // CSV utility exports
 export {
@@ -217,21 +217,21 @@ export {
   inferCsvContentType,
   jsonToCsv,
   csvToJson,
-} from './utils/csv.js';
+} from './utils/csv';
 export type {
   CsvGenerateOptions,
   CsvParseOptions,
   CsvParseResult,
   CsvParseError,
   CsvValidationResult,
-} from './utils/csv.js';
+} from './utils/csv';
 
 // Error utility exports
 export {
   toError,
   wrapError,
   getErrorMessage,
-} from './utils/errors.js';
+} from './utils/errors';
 
 // Context helper exports
 export {
@@ -249,13 +249,13 @@ export {
   hasAllRoles,
   hasAnyRole,
   hasAllPermissions,
-} from './core/context-helpers.js';
+} from './core/context-helpers';
 
 // UI exports (Swagger UI, ReDoc, Scalar)
-export { setupSwaggerUI, setupReDoc, setupDocs, setupDocsIndex } from './ui.js';
-export type { UIOptions } from './ui.js';
-export { scalarUI, setupScalar } from './ui/scalar.js';
-export type { ScalarConfig, ScalarTheme } from './ui/scalar.js';
+export { setupSwaggerUI, setupReDoc, setupDocs, setupDocsIndex } from './ui';
+export type { UIOptions } from './ui';
+export { scalarUI, setupScalar } from './ui/scalar';
+export type { ScalarConfig, ScalarTheme } from './ui/scalar';
 
 // OpenAPI utilities
 export {
@@ -270,8 +270,8 @@ export {
   ZodIssueSchema,
   ZodErrorSchema,
   HttpErrorSchema,
-} from './openapi/utils.js';
-export type { ValidationHookResult, InferZodSchema } from './openapi/utils.js';
+} from './openapi/utils';
+export type { ValidationHookResult, InferZodSchema } from './openapi/utils';
 
 // Auth exports
 export {
@@ -315,7 +315,7 @@ export {
   JWTClaimsSchema,
   parseJWTClaims,
   safeParseJWTClaims,
-} from './auth/index.js';
+} from './auth/index';
 export type {
   AuthUser,
   AuthType,
@@ -335,7 +335,7 @@ export type {
   EndpointAuthConfig,
   AuthEndpointMethods,
   JWTClaimsValidationOptions,
-} from './auth/index.js';
+} from './auth/index';
 
 // Cache exports
 export {
@@ -354,7 +354,7 @@ export {
   createRelatedPatterns,
   matchesPattern,
   parseCacheKey,
-} from './cache/index.js';
+} from './cache/index';
 export type {
   CacheEntry,
   CacheConfig,
@@ -369,7 +369,7 @@ export type {
   RedisCacheStorageOptions,
   CacheEndpointMethods,
   CacheInvalidationMethods,
-} from './cache/index.js';
+} from './cache/index';
 
 // Rate limit exports
 export {
@@ -390,7 +390,7 @@ export {
   // Storage implementations
   MemoryRateLimitStorage,
   RedisRateLimitStorage,
-} from './rate-limit/index.js';
+} from './rate-limit/index';
 export type {
   FixedWindowEntry,
   SlidingWindowEntry,
@@ -409,7 +409,7 @@ export type {
   MemoryRateLimitStorageOptions,
   RedisRateLimitClient,
   RedisRateLimitStorageOptions,
-} from './rate-limit/index.js';
+} from './rate-limit/index';
 
 // Logging exports
 export {
@@ -434,7 +434,7 @@ export {
   generateRequestId,
   // Storage implementations
   MemoryLoggingStorage,
-} from './logging/index.js';
+} from './logging/index';
 export type {
   LogLevel,
   RequestLogEntry,
@@ -449,7 +449,7 @@ export type {
   LoggingConfig,
   LoggingEnv,
   MemoryLoggingStorageOptions,
-} from './logging/index.js';
+} from './logging/index';
 
 // Storage exports (context-based storage management)
 export {
@@ -472,8 +472,8 @@ export {
   StorageRegistry,
   createNullableRegistry,
   createRegistryWithDefault,
-} from './storage/index.js';
+} from './storage/index';
 export type {
   StorageEnv,
   StorageMiddlewareConfig,
-} from './storage/index.js';
+} from './storage/index';

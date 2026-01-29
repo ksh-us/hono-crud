@@ -6,7 +6,7 @@ import type {
   LogLevel,
   RedactField,
   PathPattern,
-} from './types.js';
+} from './types';
 import {
   shouldExcludePath,
   extractClientIp,
@@ -18,10 +18,10 @@ import {
   truncateBody,
   isAllowedContentType,
   generateRequestId as defaultGenerateRequestId,
-} from './utils.js';
-import { resolveLoggingStorage } from '../storage/helpers.js';
-import { toError } from '../utils/errors.js';
-import { getContextVar, setContextVar } from '../core/context-helpers.js';
+} from './utils';
+import { resolveLoggingStorage } from '../storage/helpers';
+import { toError } from '../utils/errors';
+import { getContextVar, setContextVar } from '../core/context-helpers';
 
 // ============================================================================
 // Global Storage

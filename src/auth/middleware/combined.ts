@@ -1,8 +1,8 @@
 import type { Context, MiddlewareHandler } from 'hono';
-import type { AuthEnv, AuthConfig, PathPattern, AuthType } from '../types.js';
-import { UnauthorizedException } from '../../core/exceptions.js';
-import { createJWTMiddleware } from './jwt.js';
-import { createAPIKeyMiddleware } from './api-key.js';
+import type { AuthEnv, AuthConfig, PathPattern, AuthType } from '../types';
+import { UnauthorizedException } from '../../core/exceptions';
+import { createJWTMiddleware } from './jwt';
+import { createAPIKeyMiddleware } from './api-key';
 
 // ============================================================================
 // Path Matching

@@ -1,5 +1,5 @@
 import type { Context, Env } from 'hono';
-import { getContextVar } from '../core/context-helpers.js';
+import { getContextVar } from '../core/context-helpers';
 
 /**
  * Generic storage registry that manages global storage instances.

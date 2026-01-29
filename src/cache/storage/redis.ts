@@ -1,4 +1,4 @@
-import type { CacheEntry, CacheSetOptions, CacheStats, CacheStorage } from '../types.js';
+import type { CacheEntry, CacheSetOptions, CacheStats, CacheStorage } from '../types';
 
 /**
  * Redis client interface.

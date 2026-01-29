@@ -1,15 +1,15 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
-import { OpenAPIRoute } from '../core/route.js';
+import { OpenAPIRoute } from '../core/route';
 import type {
   MetaInput,
   OpenAPIRouteSchema,
   HookMode,
   NormalizedAuditConfig,
-} from '../core/types.js';
-import { applyComputedFields, getAuditConfig } from '../core/types.js';
-import { getSchemaFields, type ModelObject } from './types.js';
-import { createAuditLogger, type AuditLogger } from '../core/audit.js';
+} from '../core/types';
+import { applyComputedFields, getAuditConfig } from '../core/types';
+import { getSchemaFields, type ModelObject } from './types';
+import { createAuditLogger, type AuditLogger } from '../core/audit';
 
 /**
  * Result for a single item in a batch upsert operation.

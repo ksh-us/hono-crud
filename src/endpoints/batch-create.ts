@@ -1,10 +1,10 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
-import { OpenAPIRoute } from '../core/route.js';
-import type { MetaInput, OpenAPIRouteSchema, HookMode, NormalizedAuditConfig } from '../core/types.js';
-import { getAuditConfig } from '../core/types.js';
-import type { ModelObject } from './types.js';
-import { createAuditLogger, type AuditLogger } from '../core/audit.js';
+import { OpenAPIRoute } from '../core/route';
+import type { MetaInput, OpenAPIRouteSchema, HookMode, NormalizedAuditConfig } from '../core/types';
+import { getAuditConfig } from '../core/types';
+import type { ModelObject } from './types';
+import { createAuditLogger, type AuditLogger } from '../core/audit';
 
 /**
  * Base endpoint for batch creating resources.

@@ -1,15 +1,15 @@
 import type { Context, Env } from 'hono';
-import type { OpenAPIRoute } from '../core/route.js';
-import type { MetaInput } from '../core/types.js';
+import type { OpenAPIRoute } from '../core/route';
+import type { MetaInput } from '../core/types';
 import type {
   CacheConfig,
   CacheInvalidationConfig,
   CacheStorage,
   InvalidationStrategy,
-} from './types.js';
-import { generateCacheKey, createInvalidationPattern, createRelatedPatterns } from './key-generator.js';
-import { MemoryCacheStorage } from './storage/memory.js';
-import { resolveCacheStorage } from '../storage/helpers.js';
+} from './types';
+import { generateCacheKey, createInvalidationPattern, createRelatedPatterns } from './key-generator';
+import { MemoryCacheStorage } from './storage/memory';
+import { resolveCacheStorage } from '../storage/helpers';
 
 // ============================================================================
 // Global Cache Storage

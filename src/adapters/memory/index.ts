@@ -1,26 +1,26 @@
 import type { Env } from 'hono';
-import { CreateEndpoint } from '../../endpoints/create.js';
-import { ReadEndpoint } from '../../endpoints/read.js';
-import { UpdateEndpoint } from '../../endpoints/update.js';
-import { DeleteEndpoint } from '../../endpoints/delete.js';
-import { ListEndpoint } from '../../endpoints/list.js';
-import { RestoreEndpoint } from '../../endpoints/restore.js';
-import { UpsertEndpoint } from '../../endpoints/upsert.js';
-import { BatchCreateEndpoint } from '../../endpoints/batch-create.js';
-import { BatchUpdateEndpoint, type BatchUpdateItem } from '../../endpoints/batch-update.js';
-import { BatchDeleteEndpoint } from '../../endpoints/batch-delete.js';
-import { BatchRestoreEndpoint } from '../../endpoints/batch-restore.js';
-import { BatchUpsertEndpoint } from '../../endpoints/batch-upsert.js';
+import { CreateEndpoint } from '../../endpoints/create';
+import { ReadEndpoint } from '../../endpoints/read';
+import { UpdateEndpoint } from '../../endpoints/update';
+import { DeleteEndpoint } from '../../endpoints/delete';
+import { ListEndpoint } from '../../endpoints/list';
+import { RestoreEndpoint } from '../../endpoints/restore';
+import { UpsertEndpoint } from '../../endpoints/upsert';
+import { BatchCreateEndpoint } from '../../endpoints/batch-create';
+import { BatchUpdateEndpoint, type BatchUpdateItem } from '../../endpoints/batch-update';
+import { BatchDeleteEndpoint } from '../../endpoints/batch-delete';
+import { BatchRestoreEndpoint } from '../../endpoints/batch-restore';
+import { BatchUpsertEndpoint } from '../../endpoints/batch-upsert';
 import {
   VersionHistoryEndpoint,
   VersionReadEndpoint,
   VersionCompareEndpoint,
   VersionRollbackEndpoint,
-} from '../../endpoints/version-history.js';
-import { AggregateEndpoint, computeAggregations } from '../../endpoints/aggregate.js';
-import { SearchEndpoint, searchInMemory } from '../../endpoints/search.js';
-import { ExportEndpoint } from '../../endpoints/export.js';
-import { ImportEndpoint } from '../../endpoints/import.js';
+} from '../../endpoints/version-history';
+import { AggregateEndpoint, computeAggregations } from '../../endpoints/aggregate';
+import { SearchEndpoint, searchInMemory } from '../../endpoints/search';
+import { ExportEndpoint } from '../../endpoints/export';
+import { ImportEndpoint } from '../../endpoints/import';
 import type {
   MetaInput,
   PaginatedResult,
@@ -33,8 +33,8 @@ import type {
   AggregateResult,
   SearchOptions,
   SearchResult,
-} from '../../core/types.js';
-import type { ModelObject } from '../../endpoints/types.js';
+} from '../../core/types';
+import type { ModelObject } from '../../endpoints/types';
 
 // In-memory storage
 const storage = new Map<string, Map<string, unknown>>();

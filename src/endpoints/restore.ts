@@ -1,11 +1,11 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
-import { OpenAPIRoute } from '../core/route.js';
-import type { MetaInput, OpenAPIRouteSchema, HookMode, NormalizedSoftDeleteConfig, NormalizedAuditConfig } from '../core/types.js';
-import { getSoftDeleteConfig, getAuditConfig } from '../core/types.js';
-import { NotFoundException, ApiException } from '../core/exceptions.js';
-import type { ModelObject } from './types.js';
-import { createAuditLogger, type AuditLogger } from '../core/audit.js';
+import { OpenAPIRoute } from '../core/route';
+import type { MetaInput, OpenAPIRouteSchema, HookMode, NormalizedSoftDeleteConfig, NormalizedAuditConfig } from '../core/types';
+import { getSoftDeleteConfig, getAuditConfig } from '../core/types';
+import { NotFoundException, ApiException } from '../core/exceptions';
+import type { ModelObject } from './types';
+import { createAuditLogger, type AuditLogger } from '../core/audit';
 
 /**
  * Base endpoint for restoring soft-deleted resources.

@@ -1,0 +1,19 @@
+# Source files (dist is published)
+src/
+tsconfig.json
+tsup.config.ts
+
+# Development
+tests/
+examples/
+.github/
+.vscode/
+
+# Config files
+.gitignore
+.env*
+*.log
+
+# Misc
+node_modules/
+*.tgz

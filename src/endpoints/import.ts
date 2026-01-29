@@ -1,12 +1,12 @@
 import { z, type ZodObject, type ZodRawShape, type ZodError } from 'zod';
 import type { Env } from 'hono';
-import { OpenAPIRoute } from '../core/route.js';
-import type { MetaInput, OpenAPIRouteSchema, NormalizedAuditConfig } from '../core/types.js';
-import { getAuditConfig, getSoftDeleteConfig, type NormalizedSoftDeleteConfig } from '../core/types.js';
-import type { ModelObject } from './types.js';
-import { createAuditLogger, type AuditLogger } from '../core/audit.js';
-import { parseCsv, validateCsvHeaders, type CsvParseOptions, type CsvParseResult } from '../utils/csv.js';
-import { InputValidationException, ConflictException } from '../core/exceptions.js';
+import { OpenAPIRoute } from '../core/route';
+import type { MetaInput, OpenAPIRouteSchema, NormalizedAuditConfig } from '../core/types';
+import { getAuditConfig, getSoftDeleteConfig, type NormalizedSoftDeleteConfig } from '../core/types';
+import type { ModelObject } from './types';
+import { createAuditLogger, type AuditLogger } from '../core/audit';
+import { parseCsv, validateCsvHeaders, type CsvParseOptions, type CsvParseResult } from '../utils/csv';
+import { InputValidationException, ConflictException } from '../core/exceptions';
 
 // ============================================================================
 // Import Types

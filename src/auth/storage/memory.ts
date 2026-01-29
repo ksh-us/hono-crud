@@ -1,4 +1,4 @@
-import type { APIKeyEntry, APIKeyLookupResult } from '../types.js';
+import type { APIKeyEntry, APIKeyLookupResult } from '../types';
 
 // ============================================================================
 // In-Memory API Key Storage

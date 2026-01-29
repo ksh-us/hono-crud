@@ -12,7 +12,7 @@ export type {
   ResponseBodyConfig,
   LoggingConfig,
   LoggingEnv,
-} from './types.js';
+} from './types';
 
 // Utilities
 export {
@@ -28,7 +28,7 @@ export {
   truncateBody,
   isAllowedContentType,
   generateRequestId,
-} from './utils.js';
+} from './utils';
 
 // Middleware
 export {
@@ -37,8 +37,8 @@ export {
   getLoggingStorage,
   getRequestId,
   getRequestStartTime,
-} from './middleware.js';
+} from './middleware';
 
 // Storage implementations
-export { MemoryLoggingStorage } from './storage/memory.js';
-export type { MemoryLoggingStorageOptions } from './storage/memory.js';
+export { MemoryLoggingStorage } from './storage/memory';
+export type { MemoryLoggingStorageOptions } from './storage/memory';

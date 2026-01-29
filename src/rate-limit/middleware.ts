@@ -7,11 +7,11 @@ import type {
   KeyExtractor,
   FixedWindowEntry,
   SlidingWindowEntry,
-} from './types.js';
-import { RateLimitExceededException } from './exceptions.js';
-import { extractIP, extractUserId, extractAPIKey, shouldSkipPath, generateKey } from './utils.js';
-import { resolveRateLimitStorage } from '../storage/helpers.js';
-import { setContextVar } from '../core/context-helpers.js';
+} from './types';
+import { RateLimitExceededException } from './exceptions';
+import { extractIP, extractUserId, extractAPIKey, shouldSkipPath, generateKey } from './utils';
+import { resolveRateLimitStorage } from '../storage/helpers';
+import { setContextVar } from '../core/context-helpers';
 
 // ============================================================================
 // Global Storage

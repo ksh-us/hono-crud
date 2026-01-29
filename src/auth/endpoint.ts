@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import type { Env, Context } from 'hono';
-import type { AuthEnv, AuthUser, EndpointAuthConfig } from './types.js';
-import type { OpenAPIRouteSchema, MetaInput } from '../core/types.js';
-import { OpenAPIRoute } from '../core/route.js';
-import { UnauthorizedException, ForbiddenException } from '../core/exceptions.js';
+import type { AuthEnv, AuthUser, EndpointAuthConfig } from './types';
+import type { OpenAPIRouteSchema, MetaInput } from '../core/types';
+import { OpenAPIRoute } from '../core/route';
+import { UnauthorizedException, ForbiddenException } from '../core/exceptions';
 
 // ============================================================================
 // Type Helpers

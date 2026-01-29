@@ -1,4 +1,4 @@
-import type { CacheKeyOptions, InvalidationPatternOptions } from './types.js';
+import type { CacheKeyOptions, InvalidationPatternOptions } from './types';
 
 /**
  * Generates a cache key from the given options.

@@ -4,8 +4,8 @@ import type {
   AuditLogEntry,
   AuditFieldChange,
   NormalizedAuditConfig,
-} from './types.js';
-import { calculateChanges, getAuditConfig, type AuditConfig } from './types.js';
+} from './types';
+import { calculateChanges, getAuditConfig, type AuditConfig } from './types';
 
 /**
  * Interface for audit log storage adapters.

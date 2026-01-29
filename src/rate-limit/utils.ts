@@ -1,6 +1,6 @@
 import type { Context, Env } from 'hono';
-import type { PathPattern } from './types.js';
-import { getContextVar } from '../core/context-helpers.js';
+import type { PathPattern } from './types';
+import { getContextVar } from '../core/context-helpers';
 
 // ============================================================================
 // IP Extraction

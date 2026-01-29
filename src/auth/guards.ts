@@ -1,6 +1,6 @@
 import type { MiddlewareHandler } from 'hono';
-import type { AuthEnv, AuthUser, AuthorizationCheck, OwnershipExtractor, Guard } from './types.js';
-import { ForbiddenException, UnauthorizedException } from '../core/exceptions.js';
+import type { AuthEnv, AuthUser, AuthorizationCheck, OwnershipExtractor, Guard } from './types';
+import { ForbiddenException, UnauthorizedException } from '../core/exceptions';
 
 // ============================================================================
 // Role Guards

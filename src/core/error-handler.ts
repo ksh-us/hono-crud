@@ -1,8 +1,8 @@
 import type { Context, Env, ErrorHandler } from 'hono';
 import { HTTPException } from 'hono/http-exception';
 import { ZodError } from 'zod';
-import { ApiException, InputValidationException } from './exceptions.js';
-import { getRequestId } from '../logging/middleware.js';
+import { ApiException, InputValidationException } from './exceptions';
+import { getRequestId } from '../logging/middleware';
 
 /**
  * Error mapper: transforms unknown errors to ApiException.

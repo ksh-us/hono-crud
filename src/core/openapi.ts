@@ -1,9 +1,9 @@
 import type { Hono, Env, Context } from 'hono';
 import { OpenAPIHono, createRoute } from '@hono/zod-openapi';
-import type { OpenAPIRoute } from './route.js';
-import { isRouteClass } from './route.js';
-import { ApiException } from './exceptions.js';
-import type { OpenAPIRouteSchema } from './types.js';
+import type { OpenAPIRoute } from './route';
+import { isRouteClass } from './route';
+import { ApiException } from './exceptions';
+import type { OpenAPIRouteSchema } from './types';
 
 export interface OpenAPIConfig {
   openapi?: string;

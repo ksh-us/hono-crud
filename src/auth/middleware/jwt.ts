@@ -1,9 +1,9 @@
 import type { Context, MiddlewareHandler } from 'hono';
 import { verify, decode } from 'hono/jwt';
 import type { JWTPayload } from 'hono/utils/jwt/types';
-import type { AuthEnv, JWTConfig, JWTClaims, JWTAlgorithm, AuthUser } from '../types.js';
-import { UnauthorizedException } from '../../core/exceptions.js';
-import { validateJWTClaims } from '../validators/jwt-claims.js';
+import type { AuthEnv, JWTConfig, JWTClaims, JWTAlgorithm, AuthUser } from '../types';
+import { UnauthorizedException } from '../../core/exceptions';
+import { validateJWTClaims } from '../validators/jwt-claims';
 
 // ============================================================================
 // Algorithm Mapping

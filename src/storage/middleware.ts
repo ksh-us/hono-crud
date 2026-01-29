@@ -1,5 +1,5 @@
 import type { Env, MiddlewareHandler } from 'hono';
-import type { StorageEnv, StorageMiddlewareConfig } from './types.js';
+import type { StorageEnv, StorageMiddlewareConfig } from './types';
 
 /**
  * Creates middleware that injects storage instances into Hono context.

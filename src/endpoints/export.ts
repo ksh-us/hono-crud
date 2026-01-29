@@ -1,14 +1,14 @@
 import { z } from 'zod';
 import type { Env } from 'hono';
 import { stream } from 'hono/streaming';
-import { ListEndpoint } from './list.js';
-import type { MetaInput, OpenAPIRouteSchema, ListFilters, PaginatedResult } from '../core/types.js';
-import type { ModelObject } from './types.js';
+import { ListEndpoint } from './list';
+import type { MetaInput, OpenAPIRouteSchema, ListFilters, PaginatedResult } from '../core/types';
+import type { ModelObject } from './types';
 import {
   generateCsv,
   createCsvStream,
   type CsvGenerateOptions,
-} from '../utils/csv.js';
+} from '../utils/csv';
 
 // ============================================================================
 // Export Types

@@ -1,6 +1,6 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
-import { OpenAPIRoute } from '../core/route.js';
+import { OpenAPIRoute } from '../core/route';
 import type {
   MetaInput,
   OpenAPIRouteSchema,
@@ -11,8 +11,8 @@ import type {
   AggregateConfig,
   NormalizedSoftDeleteConfig,
   FilterCondition,
-} from '../core/types.js';
-import { getSoftDeleteConfig, parseAggregateQuery } from '../core/types.js';
+} from '../core/types';
+import { getSoftDeleteConfig, parseAggregateQuery } from '../core/types';
 
 /**
  * Default aggregate configuration.

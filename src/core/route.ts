@@ -5,7 +5,7 @@ import type {
   OpenAPIRouteSchema,
   RouteOptions,
   ValidatedData,
-} from './types.js';
+} from './types';
 
 /**
  * Base class for OpenAPI routes.

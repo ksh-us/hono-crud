@@ -2,7 +2,7 @@
  * Search utilities for tokenization, scoring, and highlighting.
  */
 
-import type { SearchFieldConfig, SearchMode } from '../core/types.js';
+import type { SearchFieldConfig, SearchMode } from '../core/types';
 
 // ============================================================================
 // Tokenization

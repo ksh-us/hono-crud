@@ -1,6 +1,6 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
-import { OpenAPIRoute } from '../core/route.js';
+import { OpenAPIRoute } from '../core/route';
 import type {
   MetaInput,
   OpenAPIRouteSchema,
@@ -10,23 +10,23 @@ import type {
   SearchResultItem,
   SearchMode,
   SearchFieldConfig,
-} from '../core/types.js';
-import { getSoftDeleteConfig, parseSearchMode } from '../core/types.js';
+} from '../core/types';
+import { getSoftDeleteConfig, parseSearchMode } from '../core/types';
 import {
   parseListFilters,
   applyFieldSelectionToArray,
   type ListEndpointConfig,
   type ListFilters,
   type ModelObject,
-} from './types.js';
-import { applyComputedFieldsToArray } from '../core/types.js';
+} from './types';
+import { applyComputedFieldsToArray } from '../core/types';
 import {
   tokenizeQuery,
   calculateScore,
   generateHighlights,
   parseSearchFields,
   buildSearchConfig,
-} from './search-utils.js';
+} from './search-utils';
 
 /**
  * Base endpoint for full-text search with filtering, relevance scoring, and highlighting.

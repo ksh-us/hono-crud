@@ -1,17 +1,17 @@
 import type { Context, Env } from 'hono';
-import type { RateLimitStorage } from '../rate-limit/types.js';
-import type { LoggingStorage } from '../logging/types.js';
-import type { CacheStorage } from '../cache/types.js';
-import type { AuditLogStorage } from '../core/audit.js';
-import type { VersioningStorage } from '../core/versioning.js';
-import type { MemoryAPIKeyStorage } from '../auth/storage/memory.js';
-import type { StorageEnv } from './types.js';
-import { getRateLimitStorage } from '../rate-limit/middleware.js';
-import { getLoggingStorage } from '../logging/middleware.js';
-import { getCacheStorage } from '../cache/mixin.js';
-import { getAuditStorage } from '../core/audit.js';
-import { getVersioningStorage } from '../core/versioning.js';
-import { getAPIKeyStorage } from '../auth/storage/memory.js';
+import type { RateLimitStorage } from '../rate-limit/types';
+import type { LoggingStorage } from '../logging/types';
+import type { CacheStorage } from '../cache/types';
+import type { AuditLogStorage } from '../core/audit';
+import type { VersioningStorage } from '../core/versioning';
+import type { MemoryAPIKeyStorage } from '../auth/storage/memory';
+import type { StorageEnv } from './types';
+import { getRateLimitStorage } from '../rate-limit/middleware';
+import { getLoggingStorage } from '../logging/middleware';
+import { getCacheStorage } from '../cache/mixin';
+import { getAuditStorage } from '../core/audit';
+import { getVersioningStorage } from '../core/versioning';
+import { getAPIKeyStorage } from '../auth/storage/memory';
 
 // ============================================================================
 // Type-Safe Context Variable Access

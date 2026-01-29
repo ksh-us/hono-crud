@@ -1,5 +1,5 @@
 // Types
-export type { StorageEnv, StorageMiddlewareConfig } from './types.js';
+export type { StorageEnv, StorageMiddlewareConfig } from './types';
 
 // Middleware
 export {
@@ -10,7 +10,7 @@ export {
   createAuditStorageMiddleware,
   createVersioningStorageMiddleware,
   createAPIKeyStorageMiddleware,
-} from './middleware.js';
+} from './middleware';
 
 // Helpers
 export {
@@ -20,11 +20,11 @@ export {
   resolveAuditStorage,
   resolveVersioningStorage,
   resolveAPIKeyStorage,
-} from './helpers.js';
+} from './helpers';
 
 // Registry
 export {
   StorageRegistry,
   createNullableRegistry,
   createRegistryWithDefault,
-} from './registry.js';
+} from './registry';

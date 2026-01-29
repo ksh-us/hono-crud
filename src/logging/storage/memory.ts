@@ -1,5 +1,5 @@
-import type { LoggingStorage, LogEntry, LogQueryOptions, PathPattern } from '../types.js';
-import { matchPath } from '../utils.js';
+import type { LoggingStorage, LogEntry, LogQueryOptions, PathPattern } from '../types';
+import { matchPath } from '../utils';
 
 /**
  * Options for MemoryLoggingStorage.

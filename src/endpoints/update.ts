@@ -1,7 +1,7 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import { OpenAPIRoute } from '../core/route.js';
+import { OpenAPIRoute } from '../core/route';
 import type {
   MetaInput,
   OpenAPIRouteSchema,
@@ -13,12 +13,12 @@ import type {
   RelationConfig,
   NestedUpdateInput,
   NestedWriteResult,
-} from '../core/types.js';
-import { getSoftDeleteConfig, applyComputedFields, extractNestedData, isDirectNestedData, getAuditConfig, getVersioningConfig, getMultiTenantConfig, extractTenantId } from '../core/types.js';
-import { NotFoundException } from '../core/exceptions.js';
-import { getSchemaFields, type ModelObject } from './types.js';
-import { createAuditLogger, type AuditLogger } from '../core/audit.js';
-import { createVersionManager, type VersionManager } from '../core/versioning.js';
+} from '../core/types';
+import { getSoftDeleteConfig, applyComputedFields, extractNestedData, isDirectNestedData, getAuditConfig, getVersioningConfig, getMultiTenantConfig, extractTenantId } from '../core/types';
+import { NotFoundException } from '../core/exceptions';
+import { getSchemaFields, type ModelObject } from './types';
+import { createAuditLogger, type AuditLogger } from '../core/audit';
+import { createVersionManager, type VersionManager } from '../core/versioning';
 
 /**
  * Base endpoint for updating resources.

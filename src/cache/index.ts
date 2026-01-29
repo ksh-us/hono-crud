@@ -9,7 +9,7 @@ export type {
   CacheInvalidationConfig,
   CacheKeyOptions,
   InvalidationPatternOptions,
-} from './types.js';
+} from './types';
 
 // Key generation utilities
 export {
@@ -18,12 +18,12 @@ export {
   createRelatedPatterns,
   matchesPattern,
   parseCacheKey,
-} from './key-generator.js';
+} from './key-generator';
 
 // Storage implementations
-export { MemoryCacheStorage } from './storage/memory.js';
-export { RedisCacheStorage } from './storage/redis.js';
-export type { RedisClient, RedisCacheStorageOptions } from './storage/redis.js';
+export { MemoryCacheStorage } from './storage/memory';
+export { RedisCacheStorage } from './storage/redis';
+export type { RedisClient, RedisCacheStorageOptions } from './storage/redis';
 
 // Mixins and global storage
 export {
@@ -31,5 +31,5 @@ export {
   withCacheInvalidation,
   setCacheStorage,
   getCacheStorage,
-} from './mixin.js';
-export type { CacheEndpointMethods, CacheInvalidationMethods } from './mixin.js';
+} from './mixin';
+export type { CacheEndpointMethods, CacheInvalidationMethods } from './mixin';

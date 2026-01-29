@@ -1,11 +1,11 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import { OpenAPIRoute } from '../core/route.js';
-import type { MetaInput, OpenAPIRouteSchema, NormalizedSoftDeleteConfig, NormalizedMultiTenantConfig, IncludeOptions } from '../core/types.js';
-import { getSoftDeleteConfig, applyComputedFields, getMultiTenantConfig, extractTenantId } from '../core/types.js';
-import { NotFoundException } from '../core/exceptions.js';
-import { applyFieldSelection, type SingleEndpointConfig, type ModelObject, type FieldSelection } from './types.js';
+import { OpenAPIRoute } from '../core/route';
+import type { MetaInput, OpenAPIRouteSchema, NormalizedSoftDeleteConfig, NormalizedMultiTenantConfig, IncludeOptions } from '../core/types';
+import { getSoftDeleteConfig, applyComputedFields, getMultiTenantConfig, extractTenantId } from '../core/types';
+import { NotFoundException } from '../core/exceptions';
+import { applyFieldSelection, type SingleEndpointConfig, type ModelObject, type FieldSelection } from './types';
 
 /**
  * Base endpoint for reading a single resource.

@@ -1,7 +1,7 @@
 import type { Context, MiddlewareHandler } from 'hono';
-import type { AuthEnv, APIKeyConfig, APIKeyEntry, AuthUser } from '../types.js';
-import { UnauthorizedException } from '../../core/exceptions.js';
-import { validateAPIKeyEntry } from '../validators/api-key.js';
+import type { AuthEnv, APIKeyConfig, APIKeyEntry, AuthUser } from '../types';
+import { UnauthorizedException } from '../../core/exceptions';
+import { validateAPIKeyEntry } from '../validators/api-key';
 
 // ============================================================================
 // API Key Utilities

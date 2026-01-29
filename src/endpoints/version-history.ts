@@ -1,17 +1,17 @@
 import { z, type ZodObject, type ZodRawShape } from 'zod';
 import type { Env } from 'hono';
-import { OpenAPIRoute } from '../core/route.js';
+import { OpenAPIRoute } from '../core/route';
 import type {
   MetaInput,
   OpenAPIRouteSchema,
   VersionHistoryEntry,
   NormalizedVersioningConfig,
   AuditFieldChange,
-} from '../core/types.js';
-import { getVersioningConfig } from '../core/types.js';
-import { ApiException, NotFoundException } from '../core/exceptions.js';
-import type { ModelObject } from './types.js';
-import { createVersionManager, type VersionManager } from '../core/versioning.js';
+} from '../core/types';
+import { getVersioningConfig } from '../core/types';
+import { ApiException, NotFoundException } from '../core/exceptions';
+import type { ModelObject } from './types';
+import { createVersionManager, type VersionManager } from '../core/versioning';
 
 /**
  * Response schema for a single version entry.

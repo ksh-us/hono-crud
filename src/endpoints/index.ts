@@ -1,25 +1,25 @@
-export { CreateEndpoint } from './create.js';
-export { ReadEndpoint } from './read.js';
-export { UpdateEndpoint } from './update.js';
-export { DeleteEndpoint } from './delete.js';
-export { ListEndpoint } from './list.js';
-export { RestoreEndpoint } from './restore.js';
-export { UpsertEndpoint } from './upsert.js';
-export { BatchCreateEndpoint } from './batch-create.js';
-export { BatchUpdateEndpoint } from './batch-update.js';
-export { BatchDeleteEndpoint } from './batch-delete.js';
-export { BatchRestoreEndpoint } from './batch-restore.js';
-export { BatchUpsertEndpoint } from './batch-upsert.js';
+export { CreateEndpoint } from './create';
+export { ReadEndpoint } from './read';
+export { UpdateEndpoint } from './update';
+export { DeleteEndpoint } from './delete';
+export { ListEndpoint } from './list';
+export { RestoreEndpoint } from './restore';
+export { UpsertEndpoint } from './upsert';
+export { BatchCreateEndpoint } from './batch-create';
+export { BatchUpdateEndpoint } from './batch-update';
+export { BatchDeleteEndpoint } from './batch-delete';
+export { BatchRestoreEndpoint } from './batch-restore';
+export { BatchUpsertEndpoint } from './batch-upsert';
 export {
   VersionHistoryEndpoint,
   VersionReadEndpoint,
   VersionCompareEndpoint,
   VersionRollbackEndpoint,
-} from './version-history.js';
-export { AggregateEndpoint, computeAggregations } from './aggregate.js';
-export { SearchEndpoint, searchInMemory } from './search.js';
+} from './version-history';
+export { AggregateEndpoint, computeAggregations } from './aggregate';
+export { SearchEndpoint, searchInMemory } from './search';
 
-export * from './types.js';
+export * from './types';
 
 // Re-export search utilities
 export {
@@ -30,4 +30,4 @@ export {
   generateHighlights,
   parseSearchFields,
   buildSearchConfig,
-} from './search-utils.js';
+} from './search-utils';

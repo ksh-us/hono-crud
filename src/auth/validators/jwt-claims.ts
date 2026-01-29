@@ -1,5 +1,5 @@
-import type { JWTClaims } from '../types.js';
-import { UnauthorizedException } from '../../core/exceptions.js';
+import type { JWTClaims } from '../types';
+import { UnauthorizedException } from '../../core/exceptions';
 
 /**
  * Options for JWT claims validation.

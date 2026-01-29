@@ -1,6 +1,6 @@
 import type { OpenAPIHono } from '@hono/zod-openapi';
 import type { Env } from 'hono';
-import type { OpenAPIRoute } from './core/route.js';
+import type { OpenAPIRoute } from './core/route';
 
 /**
  * Type for an OpenAPIRoute class constructor.

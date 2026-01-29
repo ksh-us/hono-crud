@@ -1,5 +1,5 @@
-import type { APIKeyEntry } from '../types.js';
-import { UnauthorizedException } from '../../core/exceptions.js';
+import type { APIKeyEntry } from '../types';
+import { UnauthorizedException } from '../../core/exceptions';
 
 /**
  * Validates an API key entry (after lookup).

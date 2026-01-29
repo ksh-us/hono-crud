@@ -1,4 +1,4 @@
-import type { RateLimitStorage, FixedWindowEntry, SlidingWindowEntry, RateLimitEntry } from '../types.js';
+import type { RateLimitStorage, FixedWindowEntry, SlidingWindowEntry, RateLimitEntry } from '../types';
 
 /**
  * Redis client interface for rate limiting.

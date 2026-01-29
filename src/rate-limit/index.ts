@@ -14,10 +14,10 @@ export type {
   PathPattern,
   RateLimitConfig,
   RateLimitEnv,
-} from './types.js';
+} from './types';
 
 // Exception
-export { RateLimitExceededException } from './exceptions.js';
+export { RateLimitExceededException } from './exceptions';
 
 // Utilities
 export {
@@ -27,7 +27,7 @@ export {
   matchPath,
   shouldSkipPath,
   generateKey,
-} from './utils.js';
+} from './utils';
 
 // Middleware
 export {
@@ -35,11 +35,11 @@ export {
   setRateLimitStorage,
   getRateLimitStorage,
   resetRateLimit,
-} from './middleware.js';
+} from './middleware';
 
 // Storage implementations
-export { MemoryRateLimitStorage } from './storage/memory.js';
-export type { MemoryRateLimitStorageOptions } from './storage/memory.js';
+export { MemoryRateLimitStorage } from './storage/memory';
+export type { MemoryRateLimitStorageOptions } from './storage/memory';
 
-export { RedisRateLimitStorage } from './storage/redis.js';
-export type { RedisRateLimitClient, RedisRateLimitStorageOptions } from './storage/redis.js';
+export { RedisRateLimitStorage } from './storage/redis';
+export type { RedisRateLimitClient, RedisRateLimitStorageOptions } from './storage/redis';

@@ -1,10 +1,10 @@
 import type { Env } from 'hono';
-import type { RateLimitStorage } from '../rate-limit/types.js';
-import type { LoggingStorage } from '../logging/types.js';
-import type { CacheStorage } from '../cache/types.js';
-import type { AuditLogStorage } from '../core/audit.js';
-import type { VersioningStorage } from '../core/versioning.js';
-import type { MemoryAPIKeyStorage } from '../auth/storage/memory.js';
+import type { RateLimitStorage } from '../rate-limit/types';
+import type { LoggingStorage } from '../logging/types';
+import type { CacheStorage } from '../cache/types';
+import type { AuditLogStorage } from '../core/audit';
+import type { VersioningStorage } from '../core/versioning';
+import type { MemoryAPIKeyStorage } from '../auth/storage/memory';
 
 /**
  * Extended Hono environment with storage context variables.
