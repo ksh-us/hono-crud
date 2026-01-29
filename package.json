@@ -6,11 +6,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ksh-us/hono-crud.git"
+    "url": "git+https://github.com/kshdotdev/hono-crud.git"
   },
-  "homepage": "https://github.com/ksh-us/hono-crud#readme",
+  "homepage": "https://github.com/kshdotdev/hono-crud#readme",
   "bugs": {
-    "url": "https://github.com/ksh-us/hono-crud/issues"
+    "url": "https://github.com/kshdotdev/hono-crud/issues"
   },
   "type": "module",
   "main": "dist/index.js",
